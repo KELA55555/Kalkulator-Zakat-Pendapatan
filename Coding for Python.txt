@@ -1,0 +1,169 @@
+print("  -----------------")
+print("/ KALKULATOR ZAKAT /")
+print("------------------ \n")
+print("Sebelum mula, perlu diingatkan bahawa zakat pendapatan melibatkan apa jua pendapatan yang anda terima pada tahun tersebut melalui perkhidmatan yang diberikan termasuklah gaji, elaun, bonus dan pendapatan sampingan. Sekian, terima kasih. \n")
+print("Berikut merupakan kaedah untuk mengira zakat pendatan anda.")
+print("Sila pilih antara 1 dan 2. \n")
+print("Kaedah 1 = Kira zakat tanpa tolakan")
+print("Kaedah 2 = Kira zakat dengan tolakan \n")
+amaun_nisab = 15762
+kaedah = int(input("Masukkan kaedah yang ingin digunakan: "))
+if kaedah == 1:
+        pendapatan = float(input("Masukkan pendapatan bulanan anda: RM"))
+        pendapatan_tahunan = pendapatan * 12
+        pendapatan_tambahan = float(input("Masukkan pendapatan tambahan anda (bonus, pendapatan sampingan, dll) pada tahun ini: RM"))
+        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+        if jumlah_pendapatan < amaun_nisab:
+                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+        else:
+                kaedah1= jumlah_pendapatan * (2.5 / 100)
+                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah1, 2)) + " \n ")                             
+elif kaedah == 2:
+        pendapatan = float(input("Masukkan jumlah pendapatan bulanan anda: RM"))
+        pendapatan_tahunan = pendapatan * 12
+        pendapatan_tambahan = float(input("Masukkan pendapatan tambahan anda (bonus, pendapatan sampingan, dll) pada tahun ini: RM"))
+        diri_sendiri = 12000
+        isteri = float(input("Masukkan jumlah perbelanjaan terhadap isteri (Tolakan RM5000.00 untuk setiap isteri): RM"))
+        anak_bawah_18 = float(input("Masukkan jumlah perbelanjaan terhadap anak yang berumur bawah 18 tahun (Tolakan RM2000.00 untuk setiap anak): RM"))
+        anak_lebih_18 = float(input("Masukkan jumlah perbelanjaan terhadap anak yang berumur lebih 18 tahun (belajar) (Tolakan RM5000.00 untuk setiap anak): RM"))
+        ibu_bapa = float(input("Masukkan jumlah perbelanjaan terhadap ibu bapa: RM"))
+        ya = {'Ya', 'Ya.', 'ya', 'ya.', 'YA', 'YA.'}
+        tidak = {'Tidak', 'Tidak.', 'tidak', 'tidak.', 'TIDAK', 'TIDAK.'}
+        kwsp = str(input("Sila jawab 'Ya' jika anda mempunyai caruman KWSP dan 'Tidak' jika tidak: "))
+        if kwsp in ya:
+                caruman_kwsp = int(input("Adakah caruman KWSP anda 7% atau 11%? (Masukkan angka tanpa meletakkan simbol peratusan): "))
+                if caruman_kwsp == 7:
+                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                        potongan_kwsp = pendapatan * (7 / 100)
+                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                        if jumlah_pendapatan < amaun_nisab:
+                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                        else:
+                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                elif caruman_kwsp == 11:
+                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                        potongan_kwsp = pendapatan * (11 / 100)
+                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                        if jumlah_pendapatan < amaun_nisab:
+                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat.\n")
+                        else:
+                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                else:
+                        while caruman_kwsp not in (7, 11):
+                                print("Maaf sila masukkan antara 7% atau 11% sahaja. \n")
+                                caruman_kwsp = int(input("Adakah caruman KWSP anda 7% atau 11%? (Masukkan angka tanpa meletakkan simbol peratusan): "))
+                                if caruman_kwsp == 7:
+                                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                        potongan_kwsp = pendapatan * (caruman_kwsp / 100)
+                                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+                                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                        if jumlah_pendapatan < amaun_nisab:
+                                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat.\n")
+                                        else:
+                                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                                if caruman_kwsp == 11:
+                                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                        potongan_kwsp = pendapatan * (caruman_kwsp / 100)
+                                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+                                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                        if jumlah_pendapatan < amaun_nisab:
+                                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat.\n")
+                                        else:
+                                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+        if kwsp in tidak:
+                pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + pendidikan_diri
+                jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                if jumlah_pendapatan < amaun_nisab:
+                        print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                else:
+                        kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                        print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")                     
+else:
+        while kaedah not in (1, 2):
+                print("Maaf, sila pilih antara 1 dan 2 sahaja. \n")
+                kaedah = int(input("Masukkan kaedah yang ingin digunakan: "))
+                if kaedah == 1:
+                        pendapatan = float(input("Masukkan jumlah pendapatan bulanan anda: RM"))
+                        pendapatan_tahunan = pendapatan * 12
+                        pendapatan_tambahan = float(input("Masukkan pendapatan tambahan anda (bonus, pendapatan sampingan, dll) pada tahun ini: RM"))
+                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                        if jumlah_pendapatan < amaun_nisab:
+                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                        else:
+                                kaedah1= jumlah_pendapatan * (2.5 / 100)
+                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah1, 2)) + " \n ")
+                if kaedah == 2:
+                        pendapatan = float(input("Masukkan jumlah pendapatan bulanan anda: RM"))
+                        pendapatan_tahunan = pendapatan * 12
+                        pendapatan_tambahan = float(input("Masukkan pendapatan tambahan anda (bonus, pendapatan sampingan, dll) pada tahun ini: RM"))
+                        diri_sendiri = 12000
+                        isteri = float(input("Masukkan jumlah perbelanjaan terhadap isteri (Tolakan RM5000.00 untuk setiap isteri): RM"))
+                        anak_bawah_18 = float(input("Masukkan jumlah perbelanjaan terhadap anak yang berumur bawah 18 tahun (Tolakan RM2000.00 untuk setiap anak): RM"))
+                        anak_lebih_18 = float(input("Masukkan jumlah perbelanjaan terhadap anak yang berumur lebih 18 tahun (belajar) (Tolakan RM5000.00 untuk setiap anak): RM"))
+                        ibu_bapa = float(input("Masukkan jumlah perbelanjaan terhadap ibu bapa: RM"))
+                        ya = {'Ya', 'Ya.', 'ya', 'ya.', 'YA', 'YA.'}
+                        tidak = {'Tidak', 'Tidak.', 'tidak', 'tidak.', 'TIDAK', 'TIDAK.'}
+                        kwsp = str(input("Sila jawab 'Ya' jika anda mempunyai caruman KWSP dan 'Tidak' jika tidak: "))
+                        if kwsp in ya:
+                                caruman_kwsp = int(input("Adakah caruman KWSP anda 7% atau 11%? (Masukkan angka tanpa meletakkan simbol peratusan): "))
+                                if caruman_kwsp == 7:
+                                        potongan_kwsp = pendapatan * (7 / 100)
+                                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+                                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                        if jumlah_pendapatan < amaun_nisab:
+                                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                                        else:
+                                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                                elif caruman_kwsp == 11:
+                                        potongan_kwsp = pendapatan * (11 / 100)
+                                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+                                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                        if jumlah_pendapatan < amaun_nisab:
+                                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                                        else:
+                                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                                else:
+                                        while caruman_kwsp not in (7,11):
+                                                print("Maaf, sila masukkan 7% atau 11% sahaja. \n")                                             
+                                                caruman_kwsp = int(input("Adakah caruman KWSP anda 7% atau 11%? (Masukkan angka tanpa meletakkan simbol peratusan): "))
+                                                if caruman_kwsp == 7:
+                                                        potongan_kwsp = pendapatan * (7 / 100)
+                                                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri   
+                                                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                                        if jumlah_pendapatan < amaun_nisab:
+                                                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                                                        else:
+                                                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                                                if caruman_kwsp == 11:
+                                                        potongan_kwsp = pendapatan * (11 / 100)
+                                                        pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                                        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri   
+                                                        jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                                        if jumlah_pendapatan < amaun_nisab:
+                                                                print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                                                        else:
+                                                                kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                                                print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+                        if kwsp in tidak:
+                                pendidikan_diri = float(input("Masukkan perbelanjaan terhadap pendidikan anda (Maksimum RM2000.00 untuk setahun): RM"))
+                                pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + pendidikan_diri   
+                                jumlah_pendapatan = pendapatan_tahunan + pendapatan_tambahan
+                                if jumlah_pendapatan < amaun_nisab:
+                                        print("\nJumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020. Anda tidak dikenakan zakat. \n")
+                                else:
+                                        kaedah2 = (jumlah_pendapatan - pelepasan_zakat) * (2.5 / 100)
+                                        print("\nZakat pendapatan yang perlu dibayar adalah sebanyak RM" + str(round(kaedah2, 2)) + " \n ")
+print("Sila tekan butang 'Enter' untuk keluar. Terima kasih kerana menggunakan perkhidmatan kami.")

@@ -1,0 +1,39 @@
+import console
+
+kaedah = int(console.input_alert("Kalkulator Zakat by Syed_kela5", "Masukkan kaedah yang dikehendaki.\nKaedah:\n1 - Kira zakat tanpa tolakan.\n2 - Kira zakat dengan tolakan."))
+amaun_nisab = 15762
+if kaedah == 1:
+        jumlah_pendapatan = float(console.input_alert("Masukkan jumlah pendapatan bulanan anda tanpa meletakkan simbol RM."))
+        if jumlah_pendapatan > 0:
+                kaedah1 = jumlah_pendapatan * 12
+                if kaedah1 < amaun_nisab:
+                        zakat_pendapatan = console.alert("Jumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020.", "\n Anda tidak dikenakan zakat.")
+                else:
+                        kaedah_1 = kaedah1 * (2.5 / 100)
+                        zakat_pendapatan = console.alert("Zakat pendapatan yang perlu dibayar ialah", "RM" + str(round(kaedah_1, 2)))           
+        else:
+                jumlah_pendapatan_1 = float(console.input_alert("Maaf, sila masukkan jumlah pendapatan anda dalam nombor positif."))
+                kaedah1 = jumlah_pendapatan * 12
+                if kaedah1 < amaun_nisab:
+                        zakat_pendapatan = console.alert("Jumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020.", "\n Anda tidak dikenakan zakat.")
+                else:
+                        kaedah_1 = kaedah1 * (2.5 / 100)
+                        zakat_pendapatan = console.alert("Zakat pendapatan anda yang perlu dibayar ialah:", "RM" + str(round(kaedah_1, 2)))                     
+elif kaedah == 2:
+        diri_sendiri = 12000
+        jumlah_pendapatan = console.input_alert("Sila isi soalan-soalan berikut tanpa meletakkan simbol RM.", "\nJawab Ya untuk teruskan.")
+        jumlah_pendapatan2 = float(console.input_alert("Jumlah pendapatan bulanan anda."))
+        isteri = float(console.input_alert("Jumlah perbelanjaan terhadap isteri.", "\n(Tolakan RM5000.00 untuk setiap isteri)"))
+        anak_bawah_18 = float(console.input_alert("Jumlah perbelanjaan terhadap anak berumur bawah 18 tahun.", "\n(Tolakan RM2000.00 untuk setiap anak)"))
+        anak_lebih_18 = float(console.input_alert("Jumlah perbelanjaan terhadap anak berumur lebih 18 tahun (belajar).", "\n(Tolakan RM5000.00 untuk setiap anak)"))
+        ibu_bapa = float(console.input_alert("Jumlah perbelanjaan terhadap ibu bapa."))
+        caruman_kwsp = int(console.input_alert("Adakah caruman KWSP anda 7% atau 11%?", "\n(Masukkan angka tanpa meletakkan simbol peratusan)"))
+        pendidikan_diri = float(console.input_alert("Jumlah perbelanjaan terhadap pendidikan anda.", "\n(Maksimum RM2000.00 setahun)"))
+        potongan_kwsp = (jumlah_pendapatan2 * 12) * (caruman_kwsp / 100)
+        pelepasan_zakat = diri_sendiri + isteri + anak_bawah_18 + anak_lebih_18 + ibu_bapa + potongan_kwsp + pendidikan_diri
+        kaedah2 = jumlah_pendapatan2 * 12
+        if kaedah2 < amaun_nisab:
+                zakat_pendapatan = console.alert("Jumlah layak dizakat lebih rendah berbanding nilai nisab tahun 2020.", "\n Anda tidak dikenakan zakat.")
+        else:
+                kaedah_2 = (kaedah2 - pelepasan_zakat) * (2.5 / 100)
+                zakat_pendapatan = console.alert("Zakat pendapatan anda yang perlu dibayar ialah:", "RM" + str(round(kaedah_2, 2)))
